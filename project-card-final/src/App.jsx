@@ -106,11 +106,12 @@ const App = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-gray-100 p-4">
+    <div className="flex flex-col justify-center items-center h-screen p-4 lg:mx-48">
       <div className="relative w-full">
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
+        <div className="absolute left-0 top-1/2 lg:-left-10">
           <FontAwesomeIcon
             onClick={scrollLeft}
+            style={{ fontSize: "30px" }}
             className={`bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 ${
               isLeftDisabled ? "opacity-50 cursor-not-allowed" : ""
             }`}
@@ -119,9 +120,10 @@ const App = () => {
           />
         </div>
 
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
+        <div className="absolute right-0 lg:-right-10 top-1/2">
           <FontAwesomeIcon
             onClick={scrollRight}
+            style={{ fontSize: "30px" }}
             className={`bg-gray-700 text-white p-2 rounded-full hover:bg-gray-800 ${
               isRightDisabled ? "opacity-50 cursor-not-allowed" : ""
             }`}
@@ -134,7 +136,14 @@ const App = () => {
           className="overflow-x-auto w-full hide-scrollbar"
           ref={scrollContainerRef}
         >
-          <div className="flex space-x-6 md:space-x-10">
+          <div>
+            <h3 className="text-2xl font-extrabold text-gray-800">Projects</h3>
+            <p className="text-sm text-gray-500">
+              Some of the side projects I'm currently working on:
+            </p>
+          </div>
+
+          <div className="flex space-x-6 md:space-x-10 pt-10">
             {games.map((game, index) => (
               <div
                 key={index}
@@ -159,7 +168,7 @@ const App = () => {
                     <img
                       src={gtaImage}
                       alt="gta img"
-                      className="rounded-lg w-full h-52 object-cover"
+                      className="rounded-lg w-full h-35 object-cover"
                     />
 
                     <div className="mt-3 ml-1">
@@ -189,7 +198,7 @@ const App = () => {
                   <h3 className="text-lg font-semibold text-gray-800">
                     {index + 1}. {game.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-500">
                     {truncateDescription(game.description)}
                   </p>
                 </div>
